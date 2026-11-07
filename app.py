@@ -5,6 +5,7 @@ En producción:          gunicorn -w 3 -t 120 app:app
 """
 import json
 import logging
+import mimetypes
 import os
 
 from flask import Flask, jsonify, request, send_file, send_from_directory
@@ -13,6 +14,7 @@ from werkzeug.exceptions import RequestEntityTooLarge
 from core import excels, images, pdfs, qr, words
 from core.common import UserError, get_files
 
+mimetypes.add_type("application/manifest+json", ".webmanifest")  # para que la app se pueda instalar
 app = Flask(__name__, static_folder="static", static_url_path="")
 app.config["MAX_CONTENT_LENGTH"] = 200 * 1024 * 1024  # 200 MB por envío
 log = logging.getLogger("convierte-archivos")

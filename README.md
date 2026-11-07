@@ -47,6 +47,16 @@ Otras opciones: **Railway**, **Fly.io** o un VPS (con el `Dockerfile`, o sin Doc
 
 Los archivos se procesan **en memoria** y no se guardan. El límite es 200 MB por envío (cámbialo en `app.py`, `MAX_CONTENT_LENGTH`).
 
+## 📲 Como app instalable
+
+El sitio ya es una app (PWA): al abrirlo en el celular o la computadora aparece el botón **«📲 Instalar la app»** en el menú.
+
+- **Android / Windows / Mac (Chrome o Edge):** toca el botón y listo. Queda con su icono y se abre sin la barra del navegador.
+- **iPhone / iPad (Safari):** toca **Compartir ⬆️ → Agregar a inicio**.
+- Necesita **HTTPS** (Render ya lo pone). Las herramientas siguen necesitando internet, porque los archivos se procesan en tu servidor.
+- Archivos: `static/manifest.webmanifest` (nombre, colores, iconos), `static/sw.js` (guarda el menú para abrir rápido), `static/js/pwa.js` (botón de instalar), `static/icons/` (iconos).
+- Si cambias páginas o estilos, sube el número de `VERSION` en `static/sw.js` (por ejemplo `convierte-v2`) para que todos reciban la versión nueva.
+
 ## 💰 Anuncios (para ganar dinero)
 
 1. Abre una cuenta en [Google AdSense](https://adsense.google.com) con tu dominio ya publicado. Google revisa el sitio y puede tardar días en aprobarlo (necesita una página de privacidad — ya incluida en `privacidad.html` — y contenido propio).
