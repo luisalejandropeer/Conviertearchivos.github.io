@@ -11,15 +11,23 @@
     });
     return;
   }
-  var s = document.createElement("script");
-  s.async = true;
-  s.crossOrigin = "anonymous";
-  s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(cfg.adsenseClient);
-  document.head.appendChild(s);
+  // Si el código de AdSense ya está en el <head> de la página, no lo cargamos otra vez.
+  if (!document.querySelector('script[src*="adsbygoogle.js"]')) {
+    var s = document.createElement("script");
+    s.async = true;
+    s.crossOrigin = "anonymous";
+    s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(cfg.adsenseClient);
+    document.head.appendChild(s);
+  }
 
   slots.forEach(function (el) {
     var id = (cfg.adSlots || {})[el.dataset.slot];
-    if (!id) { el.remove(); return; }
+    if (!id) {
+      // Aún sin ID de bloque: con ?ads=demo se muestra dónde irá el anuncio; si no, se quita el espacio.
+      if (demo) { el.classList.add("demo"); el.textContent = "📢 Aquí aparecerá un anuncio"; }
+      else el.remove();
+      return;
+    }
     var ins = document.createElement("ins");
     ins.className = "adsbygoogle";
     ins.style.display = "block";

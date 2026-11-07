@@ -8,6 +8,13 @@ OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
 SITE = "Convierte Archivos"
 # Pon aquí tu correo si quieres que aparezca en la página de privacidad (déjalo vacío para no mostrar ninguno).
 CONTACT_EMAIL = ""
+# ID de editor de Google AdSense (ca-pub-...). Si está vacío, no se agrega el código de AdSense a las páginas.
+ADSENSE_CLIENT = "ca-pub-6011165604946199"
+ADSENSE_SNIPPET = (
+    f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}"\n'
+    '     crossorigin="anonymous"></script>\n'
+    if ADSENSE_CLIENT else ""
+)
 
 HEAD = """<!doctype html>
 <html lang="es">
@@ -19,7 +26,7 @@ HEAD = """<!doctype html>
 <meta name="theme-color" content="#4f8cff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E{fav}%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css">
-</head>
+{adsense}</head>
 <body class="{theme}">
 <header class="top"><div class="wrap">
   <a class="brand" href="index.html">🧰 {site}</a>
@@ -42,7 +49,7 @@ FOOT = """
 
 
 def page(filename, title, desc, theme, fav, body, scripts="", homebtn=HOMEBTN):
-    html = HEAD.format(title=title, desc=desc, theme=theme, fav=fav, site=SITE, homebtn=homebtn)
+    html = HEAD.format(title=title, desc=desc, theme=theme, fav=fav, site=SITE, homebtn=homebtn, adsense=ADSENSE_SNIPPET)
     html += body + FOOT.format(site=SITE, scripts=scripts)
     with open(os.path.join(OUT, filename), "w", encoding="utf-8") as f:
         f.write(html)

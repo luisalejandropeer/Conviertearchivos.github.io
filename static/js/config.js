@@ -8,7 +8,7 @@
    Para ver dónde irán los anuncios, abre cualquier página con  ?ads=demo  al final del enlace.
 */
 window.SITE_CONFIG = {
-  adsenseClient: "",
+  adsenseClient: "ca-pub-6011165604946199",
   adSlots: {
     top: "",     // banner de arriba
     bottom: "",  // banner de abajo
