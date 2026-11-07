@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fotos a PDF gratis – Convierte Archivos</title>
+<meta name="description" content="Convierte fotos e imágenes (JPG, PNG, WEBP, GIF, HEIC, TIFF...) a un solo PDF, gratis. Ordénalas y gíralas fácilmente.">
+<meta name="theme-color" content="#4f8cff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🖼️%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-imagenes">
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">🧰 Convierte Archivos</a>
+  <a class="home-btn" href="index.html">🏠 Inicio</a>
+</div></header>
+
+<div class="ad-slot" data-slot="top"></div>
+<main class="wrap tool">
+  <h1>🖼️ Fotos a PDF</h1>
+  <p class="lead">Junta todas tus fotos e imágenes en un solo PDF.</p>
+  <ol class="steps">
+    <li><b>1</b> Elige tus archivos</li>
+    <li><b>2</b> Ponlos en orden</li>
+    <li><b>3</b> ¡Toca el botón grande!</li>
+  </ol>
+
+  <div id="drop" class="dropzone" role="button" tabindex="0" aria-label="Elegir archivos">
+    <div class="big-emoji">🖼️</div>
+    <button type="button" class="btn big" tabindex="-1">📂 Elegir archivos</button>
+    <p>o arrastra tus fotos hasta aquí. Sirven fotos de todo tipo: JPG, PNG, WEBP, GIF, HEIC del iPhone, TIFF…</p>
+    <input id="file-input" type="file" multiple>
+  </div>
+
+  <section id="list-area" class="panel" hidden style="margin-top:18px">
+    <div class="toolbar">
+      <span id="count" class="count"></span>
+      <button id="add-more" type="button" class="btn soft">➕ Agregar más</button>
+      <button id="sort-az" type="button" class="btn soft">🔤 A → Z</button>
+      <button id="sort-za" type="button" class="btn soft">🔤 Z → A</button>
+      <button id="reverse" type="button" class="btn soft">🔃 Al revés</button>
+      <button id="clear" type="button" class="btn soft">🗑️ Borrar todo</button>
+    </div>
+    <ul id="list" class="list"></ul>
+    <p class="hint">Arrastra las fotos para cambiarlas de lugar, usa ⬅️ ➡️ para moverlas y 🔄 para girarlas. El <b>1</b> es lo primero que saldrá.</p>
+  </section>
+
+  <section class="panel"><div class="options">
+      <label class="field">Tamaño de la hoja
+        <select id="opt-page">
+          <option value="auto">Igual que cada foto</option>
+          <option value="a4">Hoja A4</option>
+          <option value="carta">Hoja Carta</option>
+        </select></label>
+      <label class="field">Espacio en los bordes
+        <select id="opt-margin">
+          <option value="0">Sin espacio</option>
+          <option value="1">Poquito</option>
+          <option value="2">Mucho</option>
+        </select></label></div></section>
+  
+
+  <div class="go-row"><button id="go" type="button" class="btn big" disabled>✨ ¡Unir ahora!</button></div>
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+</main>
+<div class="ad-slot spaced" data-slot="bottom"></div>
+
+<footer class="foot"><div class="wrap">
+  <p>Convierte Archivos · Gratis y fácil para todos 💙</p>
+  <p><a href="index.html">Inicio</a> · <a href="privacidad.html">Privacidad</a></p>
+</div></footer>
+<script src="js/config.js"></script>
+<script src="js/ads.js"></script>
+<script src="vendor/Sortable.min.js"></script>
+<script src="js/merger.js"></script>
+<script>
+new FileMerger({
+  accept: [".jpg",".jpeg",".jfif",".png",".webp",".gif",".bmp",".tif",".tiff",".heic",".heif",".ico",".avif"], acceptLabel: "fotos e imágenes (JPG, PNG, WEBP, GIF, HEIC, TIFF, BMP…)", endpoint: "/api/imagenes-a-pdf", outName: "mis-imagenes.pdf",
+  icon: "🖼️", minFiles: 1, thumbs: true, rotate: true, showPages: false,
+  extraFields: function () { return { page: document.getElementById("opt-page").value, margin: document.getElementById("opt-margin").value }; }
+});
+</script>
+</body>
+</html>

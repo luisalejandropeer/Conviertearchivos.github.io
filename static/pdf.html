@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unir PDF gratis – Convierte Archivos</title>
+<meta name="description" content="Une varios archivos PDF en uno solo, gratis y en el orden que tú quieras.">
+<meta name="theme-color" content="#4f8cff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📕%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-pdf">
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">🧰 Convierte Archivos</a>
+  <a class="home-btn" href="index.html">🏠 Inicio</a>
+</div></header>
+
+<div class="ad-slot" data-slot="top"></div>
+<main class="wrap tool">
+  <h1>📕 Unir PDF</h1>
+  <p class="lead">Junta varios PDF en un solo PDF.</p>
+  <ol class="steps">
+    <li><b>1</b> Elige tus archivos</li>
+    <li><b>2</b> Ponlos en orden</li>
+    <li><b>3</b> ¡Toca el botón grande!</li>
+  </ol>
+
+  <div id="drop" class="dropzone" role="button" tabindex="0" aria-label="Elegir archivos">
+    <div class="big-emoji">📕</div>
+    <button type="button" class="btn big" tabindex="-1">📂 Elegir archivos</button>
+    <p>o arrastra tus PDF hasta aquí. Elige al menos 2.</p>
+    <input id="file-input" type="file" multiple>
+  </div>
+
+  <section id="list-area" class="panel" hidden style="margin-top:18px">
+    <div class="toolbar">
+      <span id="count" class="count"></span>
+      <button id="add-more" type="button" class="btn soft">➕ Agregar más</button>
+      <button id="sort-az" type="button" class="btn soft">🔤 A → Z</button>
+      <button id="sort-za" type="button" class="btn soft">🔤 Z → A</button>
+      <button id="reverse" type="button" class="btn soft">🔃 Al revés</button>
+      <button id="clear" type="button" class="btn soft">🗑️ Borrar todo</button>
+    </div>
+    <ul id="list" class="list"></ul>
+    <p class="hint">Arrastra las tarjetas para cambiarlas de lugar, o usa las flechas ⬅️ ➡️. El <b>1</b> es lo primero que saldrá.</p>
+  </section>
+
+  
+  
+
+  <div class="go-row"><button id="go" type="button" class="btn big" disabled>✨ ¡Unir ahora!</button></div>
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+</main>
+<div class="ad-slot spaced" data-slot="bottom"></div>
+
+<footer class="foot"><div class="wrap">
+  <p>Convierte Archivos · Gratis y fácil para todos 💙</p>
+  <p><a href="index.html">Inicio</a> · <a href="privacidad.html">Privacidad</a></p>
+</div></footer>
+<script src="js/config.js"></script>
+<script src="js/ads.js"></script>
+<script src="vendor/Sortable.min.js"></script>
+<script src="js/merger.js"></script>
+<script>
+new FileMerger({
+  accept: [".pdf"], acceptLabel: "archivos PDF", endpoint: "/api/unir-pdf", outName: "pdfs-unidos.pdf",
+  icon: "📕", minFiles: 2, thumbs: false, rotate: false, showPages: true,
+  extraFields: function () {  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: convierte-archivos
+    runtime: docker
+    plan: free
+    healthCheckPath: /

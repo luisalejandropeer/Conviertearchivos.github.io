@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crear QR con forma de corazón, estrella o tu imagen – Convierte Archivos</title>
+<meta name="description" content="Crea códigos QR gratis con forma de corazón, estrella, flor o de tu propia imagen, con colores y logo. Siguen funcionando.">
+<meta name="theme-color" content="#4f8cff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔳%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-qr">
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">🧰 Convierte Archivos</a>
+  <a class="home-btn" href="index.html">🏠 Inicio</a>
+</div></header>
+
+<div class="ad-slot" data-slot="top"></div>
+<main class="wrap tool">
+  <h1>🔳 Crear QR con forma</h1>
+  <p class="lead">Escribe un enlace y elige la forma que quieras. ¡Tu QR seguirá funcionando!</p>
+  <div class="qr-layout">
+    <div class="qr-form">
+      <section class="panel field-wide">
+        <label for="url">1. El enlace de internet</label>
+        <input id="url" type="url" inputmode="url" autocomplete="off" placeholder="Por ejemplo: www.mipagina.com">
+      </section>
+
+      <section class="panel">
+        <div class="field-wide"><span>2. Elige la forma</span></div>
+        <div class="shapes" style="margin-top:10px"><button type="button" class="shape-btn" data-shape="corazon" aria-pressed="false"><span class="e">❤️</span>Corazón</button>
+<button type="button" class="shape-btn" data-shape="estrella" aria-pressed="false"><span class="e">⭐</span>Estrella</button>
+<button type="button" class="shape-btn" data-shape="circulo" aria-pressed="false"><span class="e">⚪</span>Círculo</button>
+<button type="button" class="shape-btn" data-shape="flor" aria-pressed="false"><span class="e">🌸</span>Flor</button>
+<button type="button" class="shape-btn" data-shape="gota" aria-pressed="false"><span class="e">💧</span>Gota</button>
+<button type="button" class="shape-btn" data-shape="rombo" aria-pressed="false"><span class="e">🔶</span>Rombo</button>
+<button type="button" class="shape-btn" data-shape="redondeado" aria-pressed="false"><span class="e">🟦</span>Redondo</button>
+<button type="button" class="shape-btn" data-shape="cuadrado" aria-pressed="false"><span class="e">⬛</span>Normal</button>
+<button type="button" class="shape-btn" data-shape="imagen" aria-pressed="false"><span class="e">🖼️</span>Mi imagen</button></div>
+        <div id="image-shape-box" hidden style="margin-top:14px">
+          <div class="file-pick">
+            <button id="pick-shape" type="button" class="btn soft">📂 Subir mi imagen</button>
+            <span id="shape-name" class="picked"></span>
+            <input id="shape-input" type="file" accept="image/*">
+          </div>
+          <p class="hint">Mejor si es un dibujo o silueta sobre fondo blanco o transparente (un corazón, un gatito, un logo…). El QR tomará esa forma.</p>
+          <label class="check" style="display:flex;gap:10px;align-items:center;margin-top:8px;font-weight:700"><input id="image-colors" type="checkbox" style="width:24px;height:24px"> Pintar la decoración con los colores de mi imagen</label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="field-wide"><span>3. Elige colores</span></div>
+        <div class="swatches" id="swatches" style="margin:10px 0 14px"></div>
+        <div class="colors">
+          <label class="field-wide">QR <input id="fg" type="color" value="#1b1b1b"></label>
+          <label class="field-wide" id="deco-box">Decoración <input id="deco" type="color" value="#1b1b1b"></label>
+          <label class="field-wide">Fondo <input id="bg" type="color" value="#ffffff"></label>
+        </div>
+        <p class="hint">El QR siempre debe ser más oscuro que el fondo para que el celular lo lea.</p>
+        <fieldset style="margin-top:14px">
+          <legend>Estilo de los puntos</legend>
+          <label class="radio" style="display:flex;gap:10px;align-items:center;font-weight:700"><input type="radio" name="dots" value="cuadrados" checked style="width:24px;height:24px"> ▪️ Cuadrados</label>
+          <label class="radio" style="display:flex;gap:10px;align-items:center;font-weight:700"><input type="radio" name="dots" value="redondos" style="width:24px;height:24px"> ⚫ Redondos</label>
+        </fieldset>
+        <label style="display:flex;gap:10px;align-items:center;margin-top:14px;font-weight:700"><input id="transparent" type="checkbox" checked style="width:24px;height:24px"> Sin fondo fuera de la forma (transparente)</label>
+      </section>
+
+      <section class="panel">
+        <div class="field-wide"><span>4. ¿Quieres una imagen en el centro? (opcional)</span></div>
+        <div class="file-pick" style="margin-top:10px">
+          <button id="pick-logo" type="button" class="btn soft">📂 Subir imagen</button>
+          <button id="clear-logo" type="button" class="btn soft">❌ Quitar</button>
+          <span id="logo-name" class="picked"></span>
+          <input id="logo-input" type="file" accept="image/*">
+        </div>
+        <p class="hint">Un logo o carita pequeña en medio del QR. Se hace chiquita para que siga funcionando.</p>
+      </section>
+
+      <div class="go-row" style="margin:6px 0"><button id="go" type="button" class="btn big">✨ ¡Crear mi QR!</button></div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </div>
+
+    <aside class="panel qr-result" aria-live="polite">
+      <div id="badge" class="badge" hidden></div>
+      <div id="stage" class="qr-stage"><div class="empty">Tu QR aparecerá aquí 👇<br>cuando toques «Crear mi QR»</div></div>
+      <p id="qr-note" class="hint" style="margin:0 0 10px"></p>
+      <a id="download" class="btn big" href="#" download="mi-qr.png" hidden>⬇️ Descargar mi QR</a>
+    </aside>
+  </div>
+</main>
+<div class="ad-slot spaced" data-slot="bottom"></div>
+
+<footer class="foot"><div class="wrap">
+  <p>Convierte Archivos · Gratis y fácil para todos 💙</p>
+  <p><a href="index.html">Inicio</a> · <a href="privacidad.html">Privacidad</a></p>
+</div></footer>
+<script src="js/config.js"></script>
+<script src="js/ads.js"></script>
+<script src="js/qr.js"></script>
+</body>
+</html>
