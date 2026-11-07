@@ -108,7 +108,7 @@
       dl.href = state.blobUrl; dl.hidden = false;
       status.className = "status"; status.textContent = "";
     }).catch(function (e) {
-      showError(e.message === "Failed to fetch" ? "No pude conectarme. Revisa tu internet e inténtalo otra vez." : e.message);
+      showError(e instanceof TypeError ? "No pude conectarme. Revisa tu internet e inténtalo otra vez." : e.message);
     }).then(function () { go.disabled = false; });
   });
 })();

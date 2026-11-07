@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6aa5ff"/><stop offset=".45" stop-color="#4f8cff"/><stop offset="1" stop-color="#8a5cf0"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff7a63"/><stop offset="1" stop-color="#f2453a"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e2463a"/><stop offset="1" stop-color="#c22f27"/>
+    </linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#1b2a66" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <g transform="translate(256 262) scale(1) translate(-256 -262)" filter="url(#sh)">
+    <path d="M186 196 V158 Q186 118 226 118 H286 Q326 118 326 158 V196" fill="none" stroke="#3b4152" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="76" y="186" width="360" height="86" rx="22" fill="url(#lid)"/>
+    <rect x="76" y="258" width="360" height="164" rx="22" fill="url(#body)"/>
+    <rect x="76" y="262" width="360" height="9" fill="#9e2018" opacity=".55"/>
+    <rect x="92" y="196" width="328" height="10" rx="5" fill="#ffffff" opacity=".28"/>
+    <g>
+      <rect x="150" y="238" width="46" height="78" rx="12" fill="#a9cfe3"/>
+      <rect x="150" y="238" width="46" height="78" rx="12" fill="none" stroke="#6d98b0" stroke-width="5"/>
+      <rect x="160" y="268" width="26" height="9" rx="4" fill="#3b4152"/>
+      <rect x="316" y="238" width="46" height="78" rx="12" fill="#a9cfe3"/>
+      <rect x="316" y="238" width="46" height="78" rx="12" fill="none" stroke="#6d98b0" stroke-width="5"/>
+      <rect x="326" y="268" width="26" height="9" rx="4" fill="#3b4152"/>
+    </g>
+  </g>
+</svg>

@@ -185,3 +185,7 @@ legend { font-weight: 800; padding: 0; margin-bottom: 6px; }
   .hero h1 { font-size: 1.8rem; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation-duration: 2s !important; } }
+
+/* Botón "Instalar la app" del menú principal */
+.install { text-align: center; padding: 0 0 34px; }
+.install .hint { font-size: 1.05rem; max-width: 520px; margin: 0 auto; }

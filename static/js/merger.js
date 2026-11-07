@@ -170,7 +170,7 @@
         var fresh = document.createElement("button"); fresh.className = "btn soft"; fresh.textContent = "🔁 Empezar de nuevo"; fresh.onclick = function () { $("clear").click(); window.scrollTo({ top: 0, behavior: "smooth" }); };
         a.append(again, fresh); status.appendChild(a);
       }).catch(function (e) {
-        showError(e.message === "Failed to fetch" ? "No pude conectarme. Revisa tu internet e inténtalo otra vez." : e.message);
+        showError(e instanceof TypeError ? "No pude conectarme. Revisa tu internet e inténtalo otra vez." : e.message);
       }).then(function () { busy = false; render(); });
     });
 
